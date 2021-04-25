@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx';
 import Home from './pages/Home.jsx';
@@ -8,7 +8,39 @@ import './App.css';
 import Outside from './pages/Outside.jsx';
 import KidsRoom from './pages/KidsRoom.jsx';
 
+import io from 'socket.io-client';
+
+import { useDispatch } from 'react-redux';
+import { initData, appendData } from './redux/actions.jsx';
+
 function App() {
+  const [socket, setSocket] = useState(null);
+  const dispatch = useDispatch();
+
+  const onNewConnection = (data) => {
+    console.log("Socket -> onNewConnection");
+    const args = JSON.parse(data);
+    console.log(args);
+    dispatch(initData(args));
+  }
+
+  const onNewData = (data) => {
+    console.log("Socket -> onNewData");
+    const args = JSON.parse(data);
+    console.log(args);
+    dispatch(appendData(args));
+  };
+
+  useEffect(() => {
+    console.log("Setting socket.");
+    const socket = io('http://localhost:3001', {});
+
+    socket.on("onNewConnection", (data) => onNewConnection(data));
+    socket.on("onNewData", (data) => onNewData(data));
+
+    setSocket(socket);
+  }, [dispatch]);
+
   return (
     <>
       <Router>

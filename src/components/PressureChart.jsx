@@ -30,10 +30,10 @@ function PressureChart(props) {
                 height={500}
                 data={props.chartData} >
                 <CartesianGrid stroke="#262514" />
-                <XAxis dataKey="name" tick={<XAxisLineTemplate />} height={100} />
+                <XAxis dataKey="timeStamp" tick={<XAxisLineTemplate />} height={100} />
                 <YAxis type="number" stroke="#0" ticks={[970, 980, 990, 1000, 1010, 1020, 1030, 1040]} domain={[970, 1040]} allowDataOverflow="false" />
                 <Tooltip />
-                <Line type="monotone" dataKey="pressure" stroke="#a16e00" strokeWidth={4} />
+                <Line type="monotone" dataKey="value" stroke="#a16e00" strokeWidth={4} />
             </LineChart>
         </div>
     )

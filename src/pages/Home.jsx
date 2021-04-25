@@ -4,10 +4,18 @@ import './common.css';
 import video from '../videos/video-2.mp4';
 import TemperatureChart from '../components/TemperatureChart.jsx';
 
-import { useMeasure } from 'react-use'
+import { useMeasure } from 'react-use';
+import { useSelector } from 'react-redux';
+
+import * as constants from '../REST-API/constants.js';
 
 function Home() {
     const [ref, { width }] = useMeasure();
+
+    const outsideModel = useSelector(state => state.outsideData);
+    const livingRoomModel = useSelector(state => state.livingRoomData);
+    const bedRoomModel = useSelector(state => state.bedRoomData);
+    const kidsRoomModel = useSelector(state => state.kidsRoomData);
 
     return (
         <div className="home">
@@ -17,10 +25,12 @@ function Home() {
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width} chartData={dataTemp} chartBackgroundColor="#ffeaa3">
+                        <TemperatureChart chartWidth={width} chartBackgroundColor="#ffeaa3">
                             {[
-                                { name: "temp1", color: "#23a100" },
-                                { name: "temp2", color: "#a10018" }
+                                { name: constants.OUTSIDE_SECTOR_NAME, color: "#cec212", data: outsideModel.data.temp },
+                                { name: constants.LIVING_ROOM_SECTOR_NAME, color: "#12cec5", data: livingRoomModel.data.temp },
+                                { name: constants.BED_ROOM_SECTOR_NAME, color: "#8912ce", data: bedRoomModel.data.temp },
+                                { name: constants.KIDS_ROOM_SECTOR_NAME, color: "#ce123b", data: kidsRoomModel.data.temp },
                             ]}
                         </TemperatureChart>
                     </ul>

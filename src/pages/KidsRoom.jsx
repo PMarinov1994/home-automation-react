@@ -17,9 +17,15 @@ import { useSelector } from 'react-redux'
 function KidsRoom() {
     const [ref, { width }] = useMeasure();
 
-    const dataTemp = useSelector(state => state.temp);
-    const dataBattery = useSelector(state => state.battery);
-    const dataHumidity = useSelector(state => state.humidity);
+    const model = useSelector(state => state.kidsRoomData);
+
+    const getLastVal = (array) => {
+        if (array.length === 0)
+            return 0;
+
+        const lastIndex = array.length - 1;
+        return array[lastIndex].value;
+    };
 
     return (
         <div className="rooms">
@@ -29,14 +35,14 @@ function KidsRoom() {
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureGauge temp={2} />
-                        <BatteryGauge battery={3.3} />
-                        <HumidityGauge humidity={34} />
+                        <TemperatureGauge temp={getLastVal(model.data.temp)} />
+                        <BatteryGauge battery={getLastVal(model.data.battery)} />
+                        <HumidityGauge humidity={getLastVal(model.data.humidity)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width} chartData={dataTemp} />
-                        <BatteryChart chartWidth={width / 2} chartData={dataBattery} />
-                        <HumidityChart chartWidth={width / 2} chartData={dataHumidity} />
+                    <TemperatureChart chartWidth={width} chartData={model.data.temp} />
+                        <BatteryChart chartWidth={width / 2} chartData={model.data.battery} />
+                        <HumidityChart chartWidth={width / 2} chartData={model.data.humidity} />
                     </ul>
                 </div>
             </div>

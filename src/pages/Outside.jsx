@@ -19,10 +19,15 @@ import { useSelector } from 'react-redux'
 function Outside() {
     const [ref, { width }] = useMeasure();
 
-    const dataTemp = useSelector(state => state.temp);
-    const dataBattery = useSelector(state => state.battery);
-    const dataHumidity = useSelector(state => state.humidity);
-    const dataPressure = useSelector(state => state.pressure);
+    const model = useSelector(state => state.outsideData);
+
+    const getLastVal = (array) => {
+        if (array.length === 0)
+            return 0;
+
+        const lastIndex = array.length - 1;
+        return array[lastIndex].value;
+    };
 
 
     return (
@@ -33,16 +38,16 @@ function Outside() {
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureGauge temp={2} />
-                        <BatteryGauge battery={3.3} />
-                        <HumidityGauge humidity={34} />
-                        <PressureGauge pressure={1000} />
+                        <TemperatureGauge temp={getLastVal(model.data.temp)} />
+                        <BatteryGauge battery={getLastVal(model.data.battery)} />
+                        <HumidityGauge humidity={getLastVal(model.data.humidity)} />
+                        <PressureGauge pressure={getLastVal(model.data.pressure)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width / 2} chartData={dataTemp} />
-                        <PressureChart chartWidth={width / 2} chartData={dataPressure} />
-                        <BatteryChart chartWidth={width / 2} chartData={dataBattery} />
-                        <HumidityChart chartWidth={width / 2} chartData={dataHumidity} />
+                        <TemperatureChart chartWidth={width / 2} chartData={model.data.temp} />
+                        <PressureChart chartWidth={width / 2} chartData={model.data.pressure} />
+                        <BatteryChart chartWidth={width / 2} chartData={model.data.battery} />
+                        <HumidityChart chartWidth={width / 2} chartData={model.data.humidity} />
                     </ul>
                 </div>
             </div>

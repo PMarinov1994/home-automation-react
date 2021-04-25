@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GaugeChart from 'react-gauge-chart'
+import GaugeChart from '../../libs/react-gauge-chart'
 
 function TemperatureGauge(props) {
     const { temp } = props;

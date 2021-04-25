@@ -1,5 +1,5 @@
 import React from 'react';
-import GaugeChart from 'react-gauge-chart'
+import GaugeChart from '../../libs/react-gauge-chart'
 
 function PressureGauge(props) {
     const { pressure } = props;

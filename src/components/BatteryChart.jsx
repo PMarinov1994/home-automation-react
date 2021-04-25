@@ -30,10 +30,10 @@ function BatteryChart(props) {
                 height={500}
                 data={props.chartData} >
                 <CartesianGrid stroke="#262514" />
-                <XAxis dataKey="name" tick={<XAxisLineTemplate />} height={100} />
+                <XAxis dataKey="timeStamp" tick={<XAxisLineTemplate />} height={100} />
                 <YAxis type="number" stroke="#0" ticks={[2.2, 2.4, 2.6, 2.8, 3.0, 3.3, 3.5, 3.7, 3.9, 4.1, 4.3, 4.5]} domain={[2.2, 4.5]} allowDataOverflow="false" />
                 <Tooltip />
-                <Line type="monotone" dataKey="battery" stroke="#15a100" strokeWidth={4} />
+                <Line type="monotone" dataKey="value" stroke="#15a100" strokeWidth={4} />
             </LineChart>
         </div>
     )
