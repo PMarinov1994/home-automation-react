@@ -38,13 +38,13 @@ function Outside() {
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureGauge temp={getLastVal(model.data.temp)} />
+                        <TemperatureGauge temp={getLastVal(model.data.temperature)} />
                         <BatteryGauge battery={getLastVal(model.data.battery)} />
                         <HumidityGauge humidity={getLastVal(model.data.humidity)} />
                         <PressureGauge pressure={getLastVal(model.data.pressure)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width / 2} chartData={model.data.temp} />
+                        <TemperatureChart chartWidth={width / 2} chartData={model.data.temperature} />
                         <PressureChart chartWidth={width / 2} chartData={model.data.pressure} />
                         <BatteryChart chartWidth={width / 2} chartData={model.data.battery} />
                         <HumidityChart chartWidth={width / 2} chartData={model.data.humidity} />

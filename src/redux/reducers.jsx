@@ -9,7 +9,7 @@ const createInitState = (sectorName) => {
     return {
         sector: sectorName,
         data: {
-            temp: [],
+            temperature: [],
             battery: [],
             humidity: [],
             pressure: []
@@ -19,7 +19,7 @@ const createInitState = (sectorName) => {
 
 const parseAllData = (data, sector) => {
     const parsedData = {
-        temp: [],
+        temperature: [],
         battery: [],
         humidity: [],
         pressure: []

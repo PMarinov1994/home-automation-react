@@ -33,7 +33,7 @@ function App() {
 
   useEffect(() => {
     console.log("Setting socket.");
-    const socket = io('http://localhost:3001', {});
+    const socket = io('http://192.168.200.145:6969', {});
 
     socket.on("onNewConnection", (data) => onNewConnection(data));
     socket.on("onNewData", (data) => onNewData(data));

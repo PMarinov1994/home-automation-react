@@ -35,12 +35,12 @@ function LivingRoom() {
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureGauge temp={getLastVal(model.data.temp)} />
+                        <TemperatureGauge temp={getLastVal(model.data.temperature)} />
                         <BatteryGauge battery={getLastVal(model.data.battery)} />
                         <HumidityGauge humidity={getLastVal(model.data.humidity)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width} chartData={model.data.temp} />
+                        <TemperatureChart chartWidth={width} chartData={model.data.temperature} />
                         <BatteryChart chartWidth={width / 2} chartData={model.data.battery} />
                         <HumidityChart chartWidth={width / 2} chartData={model.data.humidity} />
                     </ul>
