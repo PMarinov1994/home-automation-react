@@ -27,10 +27,10 @@ function Home() {
                     <ul className="control-items">
                         <TemperatureChart chartWidth={width} chartBackgroundColor="#ffeaa3">
                             {[
-                                { name: constants.OUTSIDE_SECTOR_NAME, color: "#cec212", data: outsideModel.data.temp },
-                                { name: constants.LIVING_ROOM_SECTOR_NAME, color: "#12cec5", data: livingRoomModel.data.temp },
-                                { name: constants.BED_ROOM_SECTOR_NAME, color: "#8912ce", data: bedRoomModel.data.temp },
-                                { name: constants.KIDS_ROOM_SECTOR_NAME, color: "#ce123b", data: kidsRoomModel.data.temp },
+                                { name: constants.OUTSIDE_SECTOR_NAME, color: "#cec212", data: outsideModel.data.temperature },
+                                { name: constants.LIVING_ROOM_SECTOR_NAME, color: "#12cec5", data: livingRoomModel.data.temperature },
+                                { name: constants.BED_ROOM_SECTOR_NAME, color: "#8912ce", data: bedRoomModel.data.temperature },
+                                { name: constants.KIDS_ROOM_SECTOR_NAME, color: "#ce123b", data: kidsRoomModel.data.temperature },
                             ]}
                         </TemperatureChart>
                     </ul>
