@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Navbar from './components/Navbar.jsx';
-import Home from './pages/Home.jsx';
-import LivingRoom from './pages/LivingRoom.jsx';
-import BedRoom from './pages/BedRoom.jsx';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import LivingRoom from './pages/LivingRoom';
+import BedRoom from './pages/BedRoom';
 import './App.css';
-import Outside from './pages/Outside.jsx';
-import KidsRoom from './pages/KidsRoom.jsx';
+import Outside from './pages/Outside';
+import KidsRoom from './pages/KidsRoom';
 
 import io from 'socket.io-client';
 
 import { useDispatch } from 'react-redux';
-import { initData, appendData } from './redux/actions.jsx';
+import { initData, appendData } from './redux/actions';
+import { AppDispatch } from './redux/store';
 
 function App() {
-  const [socket, setSocket] = useState(null);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
 
-  const onNewConnection = (data) => {
+  const onNewConnection = (data: string) => {
     console.log("Socket -> onNewConnection");
+
     const args = JSON.parse(data);
     console.log(args);
     dispatch(initData(args));
   }
 
-  const onNewData = (data) => {
+  const onNewData = (data: string) => {
     console.log("Socket -> onNewData");
+
     const args = JSON.parse(data);
     console.log(args);
     dispatch(appendData(args));
@@ -35,10 +37,8 @@ function App() {
     console.log("Setting socket.");
     const socket = io('http://185.89.125.133:2052', {});
 
-    socket.on("onNewConnection", (data) => onNewConnection(data));
-    socket.on("onNewData", (data) => onNewData(data));
-
-    setSocket(socket);
+    socket.on("onNewConnection", (data: string) => onNewConnection(data));
+    socket.on("onNewData", (data: string) => onNewData(data));
   }, [dispatch]);
 
   return (

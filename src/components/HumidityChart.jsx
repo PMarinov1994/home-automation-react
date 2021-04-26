@@ -33,7 +33,7 @@ function HumidityChart(props) {
                 <XAxis dataKey="timeStamp" tick={<XAxisLineTemplate />} height={100} />
                 <YAxis type="number" stroke="#0" ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} domain={[0, 100]} allowDataOverflow="false" />
                 <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#0066a1" strokeWidth={4} />
+                <Line type="monotone" dataKey="value" stroke="#0066a1" strokeWidth={4} dot={false}/>
             </LineChart>
         </div>
     )

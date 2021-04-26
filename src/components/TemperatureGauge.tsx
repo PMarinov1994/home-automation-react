@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+
 import GaugeChart from '../../libs/react-gauge-chart'
 
-function TemperatureGauge(props) {
+interface TemperatureGaugeProps {
+    temp: number;
+}
+
+function TemperatureGauge(props: TemperatureGaugeProps) {
     const { temp } = props;
 
     const [minValue] = useState(-20);
@@ -29,7 +34,7 @@ function TemperatureGauge(props) {
             <GaugeChart id="gauge-chart2"
                 nrOfLevels={3}
                 needleBaseColor={"#0"}
-                formatTextValue={(value => temp + '°C')}
+                formatTextValue={(() => temp + '°C')}
                 textColor={"#0"}
                 needleColor={"#0c5af5"}
                 arcsLength={[2, 6, 6]}
