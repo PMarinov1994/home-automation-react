@@ -7,9 +7,16 @@ import {
     Tooltip,
     Line
 } from "recharts";
+import { Value } from '../types/sectorDataTypes';
+import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
+
+interface HumidityChartProps {
+    chartWidth: number;
+    chartData: Value[];
+}
 
 
-function XAxisLineTemplate(props) {
+function XAxisLineTemplate(props: XAxisLineTemplateProps) {
     const { x, y, payload } = props;
 
     return (
@@ -21,22 +28,22 @@ function XAxisLineTemplate(props) {
     )
 }
 
-function BatteryChart(props) {
+function HumidityChart(props: HumidityChartProps) {
     return (
-        <div className="battery-chart">
-            <h1>Battery Chart:</h1>
+        <div className="humidity-chart">
+            <h1>Humidity Chart:</h1>
             <LineChart
                 width={props.chartWidth}
                 height={500}
                 data={props.chartData} >
                 <CartesianGrid stroke="#262514" />
                 <XAxis dataKey="timeStamp" tick={<XAxisLineTemplate />} height={100} />
-                <YAxis type="number" stroke="#0" ticks={[2.2, 2.4, 2.6, 2.8, 3.0, 3.3, 3.5, 3.7, 3.9, 4.1, 4.3, 4.5]} domain={[2.2, 4.5]} allowDataOverflow="false" />
+                <YAxis type="number" stroke="#0" ticks={[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]} domain={[0, 100]} allowDataOverflow={false} />
                 <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#15a100" strokeWidth={4} dot={false}/>
+                <Line type="monotone" dataKey="value" stroke="#0066a1" strokeWidth={4} dot={false} />
             </LineChart>
         </div>
     )
 }
 
-export default BatteryChart;
+export default HumidityChart;

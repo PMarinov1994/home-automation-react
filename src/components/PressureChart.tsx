@@ -7,9 +7,15 @@ import {
     Tooltip,
     Line
 } from "recharts";
+import { Value } from '../types/sectorDataTypes';
+import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
 
+interface PRessureChartProps {
+    chartWidth: number;
+    chartData: Value[];
+}
 
-function XAxisLineTemplate(props) {
+function XAxisLineTemplate(props: XAxisLineTemplateProps) {
     const { x, y, payload } = props;
 
     return (
@@ -21,7 +27,7 @@ function XAxisLineTemplate(props) {
     )
 }
 
-function PressureChart(props) {
+function PressureChart(props: PRessureChartProps) {
     return (
         <div className="pressure-chart">
             <h1>Pressure Chart:</h1>
@@ -31,9 +37,9 @@ function PressureChart(props) {
                 data={props.chartData} >
                 <CartesianGrid stroke="#262514" />
                 <XAxis dataKey="timeStamp" tick={<XAxisLineTemplate />} height={100} />
-                <YAxis type="number" stroke="#0" ticks={[970, 980, 990, 1000, 1010, 1020, 1030, 1040]} domain={[970, 1040]} allowDataOverflow="false" />
+                <YAxis type="number" stroke="#0" ticks={[970, 980, 990, 1000, 1010, 1020, 1030, 1040]} domain={[970, 1040]} allowDataOverflow={false} />
                 <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#a16e00" strokeWidth={4} dot={false}/>
+                <Line type="monotone" dataKey="value" stroke="#a16e00" strokeWidth={4} dot={false} />
             </LineChart>
         </div>
     )

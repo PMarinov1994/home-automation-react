@@ -1,7 +1,11 @@
 import React from 'react';
 import GaugeChart from '../../libs/react-gauge-chart'
 
-function BatteryGauge(props) {
+interface BatteryGaugeProps {
+    battery: number;
+}
+
+function BatteryGauge(props: BatteryGaugeProps) {
     const { battery } = props;
 
     const calculatePercent = () => {
@@ -29,7 +33,7 @@ function BatteryGauge(props) {
             <GaugeChart id="battery-gauge-chart2"
                 nrOfLevels={3}
                 needleBaseColor={"#0"}
-                formatTextValue={(value => battery + 'V')}
+                formatTextValue={(() => battery + 'V')}
                 textColor={"#0"}
                 needleColor={"#0c5af5"}
                 colors={["#f54263", "#f5c60c", "#0cf52b"]}

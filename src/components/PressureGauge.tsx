@@ -1,7 +1,11 @@
 import React from 'react';
 import GaugeChart from '../../libs/react-gauge-chart'
 
-function PressureGauge(props) {
+interface PressureGaugeProps {
+    pressure: number;
+}
+
+function PressureGauge(props: PressureGaugeProps) {
     const { pressure } = props;
 
     const calculatePercent = () => {
@@ -30,7 +34,7 @@ function PressureGauge(props) {
                 nrOfLevels={3}
                 arcsLength={[3, 5]}
                 needleBaseColor={"#0"}
-                formatTextValue={(value => pressure + 'hPa')}
+                formatTextValue={(() => pressure + 'hPa')}
                 textColor={"#0"}
                 needleColor={"#0c5af5"}
                 colors={["#00a196", "#ccb100"]}

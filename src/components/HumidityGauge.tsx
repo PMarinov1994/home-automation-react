@@ -1,7 +1,11 @@
 import React from 'react';
 import GaugeChart from '../../libs/react-gauge-chart'
 
-function HumidityGauge(props) {
+interface HumidityGaugeProps {
+    humidity: number;
+};
+
+function HumidityGauge(props: HumidityGaugeProps) {
     const { humidity } = props;
 
     const chartStyle = {
