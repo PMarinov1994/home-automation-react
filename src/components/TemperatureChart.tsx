@@ -9,13 +9,7 @@ import {
     Legend
 } from "recharts";
 import { Value } from '../types/sectorDataTypes';
-
-
-interface XAxisLineTemplateProps {
-    x?: number;
-    y?: number;
-    payload?: any;
-}
+import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
 
 function XAxisLineTemplate(props: XAxisLineTemplateProps) {
     const { x, y, payload } = props;
