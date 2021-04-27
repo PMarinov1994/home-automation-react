@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import * as constants from '../types/constants';
 import { AppState } from '../redux/store';
 import { OutsideSector, LivingRoomSector, BedRoomSector, KidsRoomSector } from '../types/sectorTypes';
+import { getLastReportTime } from './utils';
 
 function Home() {
     const [ref, { width }] = useMeasure();
@@ -25,6 +26,10 @@ function Home() {
         <div className="rooms">
             <img src={home_img} alt="HOME IMAGE" />
             <h1>HOME PAGE</h1>
+            <h2 style={{ marginBottom: 0 }}>Outside Last Report: {getLastReportTime(outsideModel)}</h2>
+            <h2 style={{ marginBottom: 0 }}>Living Room Last Report: {getLastReportTime(livingRoomModel)}</h2>
+            <h2 style={{ marginBottom: 0 }}>Bed Room Last Report: {getLastReportTime(bedRoomModel)}</h2>
+            <h2>Kids Room Last Report: {getLastReportTime(kidsRoomModel)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}
             <div className="control-container" ref={ref}>

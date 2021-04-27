@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
 import { Value } from '../types/sectorDataTypes';
 import { LivingRoomSector } from '../types/sectorTypes';
+import { getLastReportTime } from './utils';
 
 function LivingRoom() {
     const [ref, { width }] = useMeasure();
@@ -35,6 +36,7 @@ function LivingRoom() {
         <div className="rooms">
             <img src={living_room_img} alt="LIVING ROOM IMAGE" />
             <h1>Living Room</h1>
+            <h2>Last Report: {getLastReportTime(model)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}
             <div className="control-container" ref={ref}>

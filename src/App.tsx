@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     console.log("Setting socket.");
-    const socket = io('http://185.89.125.133', {});
+    const socket = io('marinovi-home-varna.eu', {});
 
     socket.on("onNewConnection", (data: string) => onNewConnection(data));
     socket.on("onNewData", (data: string) => onNewData(data));

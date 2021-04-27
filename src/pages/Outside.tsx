@@ -19,6 +19,7 @@ import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
 import { Value } from '../types/sectorDataTypes';
 import { OutsideSector } from '../types/sectorTypes';
+import { getLastReportTime } from './utils';
 
 function Outside() {
     const [ref, { width }] = useMeasure();
@@ -38,6 +39,7 @@ function Outside() {
         <div className="rooms">
             <img src={outside_img} alt="OUTSIDE ROOM IMAGE" />
             <h1>Outside</h1>
+            <h2>Last Report: {getLastReportTime(model)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}
             <div className="control-container" ref={ref}>

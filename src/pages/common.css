@@ -45,3 +45,11 @@ img {
     height: auto;
     display:flex;
 }
+
+h1 {
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 60px;
+}
