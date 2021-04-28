@@ -15,7 +15,7 @@ import HumidityChart from '../components/HumidityChart';
 
 import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
-import { getLastReportTime } from './utils';
+import { calculateWidth, getLastReportTime } from './utils';
 import { Value } from '../types/sectorDataTypes/BaseSectorData';
 import { BedRoomSector } from '../types/sectorTypes/BedRoomSector';
 
@@ -48,8 +48,8 @@ function BedRoom() {
                     </ul>
                     <ul className="control-items">
                         <TemperatureChart chartWidth={width} chartData={model.getData().temperature} />
-                        <BatteryChart chartWidth={width / 2} chartData={model.getData().battery} />
-                        <HumidityChart chartWidth={width / 2} chartData={model.getData().humidity} />
+                        <BatteryChart chartWidth={calculateWidth(width)} chartData={model.getData().battery} />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={model.getData().humidity} />
                     </ul>
                 </div>
             </div>

@@ -17,7 +17,7 @@ import PressureChart from '../components/PressureChart';
 
 import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
-import { getLastReportTime } from './utils';
+import { calculateWidth, getLastReportTime } from './utils';
 import { Value } from '../types/sectorDataTypes/BaseSectorData';
 import { OutsideSector } from '../types/sectorTypes/OutsideSector';
 import { GardenZero } from '../types/sectorTypes/GardenZeroSector';
@@ -53,10 +53,10 @@ function Outside() {
                         <PressureGauge pressure={getLastVal(outsideData.getData().pressure)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width / 2} chartData={outsideData.getData().temperature} />
-                        <PressureChart chartWidth={width / 2} chartData={outsideData.getData().pressure} />
-                        <BatteryChart chartWidth={width / 2} chartData={outsideData.getData().battery} />
-                        <HumidityChart chartWidth={width / 2} chartData={outsideData.getData().humidity} />
+                        <TemperatureChart chartWidth={calculateWidth(width)} chartData={outsideData.getData().temperature} />
+                        <PressureChart chartWidth={calculateWidth(width)} chartData={outsideData.getData().pressure} />
+                        <BatteryChart chartWidth={calculateWidth(width)} chartData={outsideData.getData().battery} />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={outsideData.getData().humidity} />
                     </ul>
 
                     <h1>GARDEN</h1>
@@ -68,8 +68,8 @@ function Outside() {
                     </ul>
 
                     <ul className="control-items">
-                        <HumidityChart chartWidth={width / 2} chartData={gardenModel.getData().singlePlantHum} info="Single Plant (A0)" />
-                        <HumidityChart chartWidth={width / 2} chartData={gardenModel.getData().doublePlantHum} info="Double Plant (A1)" />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().singlePlantHum} info="Single Plant (A0)" />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().doublePlantHum} info="Double Plant (A1)" />
                         <BatteryChart chartWidth={width} chartData={gardenModel.getData().battery} />
                     </ul>
                 </div>
