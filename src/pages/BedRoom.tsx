@@ -15,9 +15,9 @@ import HumidityChart from '../components/HumidityChart';
 
 import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
-import { Value } from '../types/sectorDataTypes';
-import { BedRoomSector } from '../types/sectorTypes';
 import { getLastReportTime } from './utils';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
+import { BedRoomSector } from '../types/sectorTypes/BedRoomSector';
 
 function BedRoom() {
     const [ref, { width }] = useMeasure();
@@ -35,7 +35,7 @@ function BedRoom() {
     return (
         <div className="rooms">
             <img src={bed_room_img} alt="BED ROOM IMAGE" />
-            <h1>Bed Room</h1>
+            <h1>First Bed Room</h1>
             <h2>Last Report: {getLastReportTime(model)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}

@@ -8,7 +8,7 @@ import {
     Line,
     Legend
 } from "recharts";
-import { Value } from '../types/sectorDataTypes';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
 import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
 
 function XAxisLineTemplate(props: XAxisLineTemplateProps) {
@@ -70,6 +70,7 @@ function TemperatureChart(props: TemperatureChartProps) {
                 type="category"
                 tick={<XAxisLineTemplate />}
                 height={100}
+                key={index}
                 allowDuplicatedCategory={false}
                 xAxisId={index}
                 hide={index === 0 ? false : true} />);

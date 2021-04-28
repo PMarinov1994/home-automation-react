@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { livingRoomData, bedRoomData, kidsRoomData, outsideData } from './reducers';
+import { livingRoomData, bedRoomData, kidsRoomData, outsideData, gardenZeroData } from './reducers';
 import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction';
 
 import { combineReducers } from '@reduxjs/toolkit'
@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
     livingRoomData,
     bedRoomData,
     kidsRoomData,
-    outsideData
+    outsideData,
+    gardenZeroData
 });
 
 const store = createStore(rootReducer, devToolsEnhancer({}));

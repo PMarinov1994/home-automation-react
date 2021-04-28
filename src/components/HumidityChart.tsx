@@ -7,12 +7,13 @@ import {
     Tooltip,
     Line
 } from "recharts";
-import { Value } from '../types/sectorDataTypes';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
 import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
 
 interface HumidityChartProps {
     chartWidth: number;
     chartData: Value[];
+    info?: string;
 }
 
 
@@ -31,7 +32,7 @@ function XAxisLineTemplate(props: XAxisLineTemplateProps) {
 function HumidityChart(props: HumidityChartProps) {
     return (
         <div className="humidity-chart">
-            <h1>Humidity Chart:</h1>
+            <h1>Humidity Chart{props.info !== undefined ? ` ${props.info}` : ''}:</h1>
             <LineChart
                 width={props.chartWidth}
                 height={500}

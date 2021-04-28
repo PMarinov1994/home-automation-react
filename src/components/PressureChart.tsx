@@ -7,7 +7,7 @@ import {
     Tooltip,
     Line
 } from "recharts";
-import { Value } from '../types/sectorDataTypes';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
 import { XAxisLineTemplateProps } from '../types/XAxisLineTemplateTypes';
 
 interface PRessureChartProps {

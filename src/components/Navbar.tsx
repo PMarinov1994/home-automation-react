@@ -26,6 +26,12 @@ function Navbar() {
             </li>
 
             <li className="nav-item">
+              <Link to='/outside' className='nav-links' onClick={closeMobileMenu}>
+                Outside
+              </Link>
+            </li>
+
+            <li className="nav-item">
               <Link to='/living-room' className='nav-links' onClick={closeMobileMenu}>
                 Living Room
               </Link>
@@ -33,19 +39,13 @@ function Navbar() {
 
             <li className="nav-item">
               <Link to='/bed-room' className='nav-links' onClick={closeMobileMenu}>
-                Bed Room
+                First Bed Room
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link to='/kids-room' className='nav-links' onClick={closeMobileMenu}>
-                Kids Room
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to='/outside' className='nav-links' onClick={closeMobileMenu}>
-                Outside
+              <Link to='/bed-room-2' className='nav-links' onClick={closeMobileMenu}>
+                Second Bed Room
               </Link>
             </li>
 

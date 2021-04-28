@@ -15,9 +15,9 @@ import HumidityChart from '../components/HumidityChart';
 
 import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
-import { Value } from '../types/sectorDataTypes';
-import { LivingRoomSector } from '../types/sectorTypes';
 import { getLastReportTime } from './utils';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
+import { LivingRoomSector } from '../types/sectorTypes/LivingRoomSector';
 
 function LivingRoom() {
     const [ref, { width }] = useMeasure();

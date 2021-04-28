@@ -17,14 +17,16 @@ import PressureChart from '../components/PressureChart';
 
 import { useSelector } from 'react-redux'
 import { AppState } from '../redux/store';
-import { Value } from '../types/sectorDataTypes';
-import { OutsideSector } from '../types/sectorTypes';
 import { getLastReportTime } from './utils';
+import { Value } from '../types/sectorDataTypes/BaseSectorData';
+import { OutsideSector } from '../types/sectorTypes/OutsideSector';
+import { GardenZero } from '../types/sectorTypes/GardenZeroSector';
 
 function Outside() {
     const [ref, { width }] = useMeasure();
 
-    const model = useSelector<AppState, OutsideSector>(state => state.outsideData);
+    const outsideData = useSelector<AppState, OutsideSector>(state => state.outsideData);
+    const gardenModel = useSelector<AppState, GardenZero>(state => state.gardenZeroData);
 
     const getLastVal = (array: Value[]) => {
         if (array.length === 0)
@@ -39,22 +41,36 @@ function Outside() {
         <div className="rooms">
             <img src={outside_img} alt="OUTSIDE ROOM IMAGE" />
             <h1>Outside</h1>
-            <h2>Last Report: {getLastReportTime(model)}</h2>
+            <h2>Last Report: {getLastReportTime(outsideData)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}
             <div className="control-container" ref={ref}>
                 <div className="control-wrapper">
                     <ul className="control-items">
-                        <TemperatureGauge temp={getLastVal(model.getData().temperature)} />
-                        <BatteryGauge battery={getLastVal(model.getData().battery)} />
-                        <HumidityGauge humidity={getLastVal(model.getData().humidity)} />
-                        <PressureGauge pressure={getLastVal(model.getData().pressure)} />
+                        <TemperatureGauge temp={getLastVal(outsideData.getData().temperature)} />
+                        <BatteryGauge battery={getLastVal(outsideData.getData().battery)} />
+                        <HumidityGauge humidity={getLastVal(outsideData.getData().humidity)} />
+                        <PressureGauge pressure={getLastVal(outsideData.getData().pressure)} />
                     </ul>
                     <ul className="control-items">
-                        <TemperatureChart chartWidth={width / 2} chartData={model.getData().temperature} />
-                        <PressureChart chartWidth={width / 2} chartData={model.getData().pressure} />
-                        <BatteryChart chartWidth={width / 2} chartData={model.getData().battery} />
-                        <HumidityChart chartWidth={width / 2} chartData={model.getData().humidity} />
+                        <TemperatureChart chartWidth={width / 2} chartData={outsideData.getData().temperature} />
+                        <PressureChart chartWidth={width / 2} chartData={outsideData.getData().pressure} />
+                        <BatteryChart chartWidth={width / 2} chartData={outsideData.getData().battery} />
+                        <HumidityChart chartWidth={width / 2} chartData={outsideData.getData().humidity} />
+                    </ul>
+
+                    <h1>GARDEN</h1>
+                    <h2>Last Report: {getLastReportTime(gardenModel)}</h2>
+                    <ul className="control-items">
+                        <HumidityGauge humidity={getLastVal(gardenModel.getData().singlePlantHum)} info="Single Plant (A0)" />
+                        <HumidityGauge humidity={getLastVal(gardenModel.getData().doublePlantHum)} info="Double Plant (A1)" />
+                        <BatteryGauge battery={getLastVal(gardenModel.getData().battery)} />
+                    </ul>
+
+                    <ul className="control-items">
+                        <HumidityChart chartWidth={width / 2} chartData={gardenModel.getData().singlePlantHum} info="Single Plant (A0)" />
+                        <HumidityChart chartWidth={width / 2} chartData={gardenModel.getData().doublePlantHum} info="Double Plant (A1)" />
+                        <BatteryChart chartWidth={width} chartData={gardenModel.getData().battery} />
                     </ul>
                 </div>
             </div>

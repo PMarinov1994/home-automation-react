@@ -3,6 +3,7 @@ import GaugeChart from '../../libs/react-gauge-chart'
 
 interface HumidityGaugeProps {
     humidity: number;
+    info?: string;
 };
 
 function HumidityGauge(props: HumidityGaugeProps) {
@@ -18,7 +19,7 @@ function HumidityGauge(props: HumidityGaugeProps) {
 
     return (
         <div style={{ margin: 0, padding: 0 }}>
-            <h3>Humidity Gauge:</h3>
+            <h3>Humidity Gauge{props.info !== undefined ? ` ${props.info}` : ''}:</h3>
             <GaugeChart id="humidity-gauge-chart2"
                 nrOfLevels={4}
                 needleBaseColor={"#0"}

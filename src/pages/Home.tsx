@@ -11,8 +11,12 @@ import { useSelector } from 'react-redux';
 
 import * as constants from '../types/constants';
 import { AppState } from '../redux/store';
-import { OutsideSector, LivingRoomSector, BedRoomSector, KidsRoomSector } from '../types/sectorTypes';
 import { getLastReportTime } from './utils';
+import { BedRoomSector } from '../types/sectorTypes/BedRoomSector';
+import { KidsRoomSector } from '../types/sectorTypes/KidsRoomSector';
+import { LivingRoomSector } from '../types/sectorTypes/LivingRoomSector';
+import { OutsideSector } from '../types/sectorTypes/OutsideSector';
+import { GardenZero } from '../types/sectorTypes/GardenZeroSector';
 
 function Home() {
     const [ref, { width }] = useMeasure();
@@ -21,15 +25,12 @@ function Home() {
     const livingRoomModel: LivingRoomSector = useSelector<AppState, LivingRoomSector>(state => state.livingRoomData);
     const bedRoomModel: BedRoomSector = useSelector<AppState, BedRoomSector>(state => state.bedRoomData);
     const kidsRoomModel: KidsRoomSector = useSelector<AppState, KidsRoomSector>(state => state.kidsRoomData);
+    const gardenZeroModel: GardenZero = useSelector<AppState, GardenZero>(state => state.gardenZeroData);
 
     return (
         <div className="rooms">
             <img src={home_img} alt="HOME IMAGE" />
             <h1>HOME PAGE</h1>
-            <h2 style={{ marginBottom: 0 }}>Outside Last Report: {getLastReportTime(outsideModel)}</h2>
-            <h2 style={{ marginBottom: 0 }}>Living Room Last Report: {getLastReportTime(livingRoomModel)}</h2>
-            <h2 style={{ marginBottom: 0 }}>Bed Room Last Report: {getLastReportTime(bedRoomModel)}</h2>
-            <h2>Kids Room Last Report: {getLastReportTime(kidsRoomModel)}</h2>
 
             {/*@ts-ignore for the ref attribute*/}
             <div className="control-container" ref={ref}>
@@ -46,6 +47,12 @@ function Home() {
                     </ul>
                 </div>
             </div>
+
+            <h2 style={{ marginBottom: 0 }}>Outside Last Report: {getLastReportTime(outsideModel)}</h2>
+            <h2 style={{ marginBottom: 0 }}>Living Room Last Report: {getLastReportTime(livingRoomModel)}</h2>
+            <h2 style={{ marginBottom: 0 }}>First Bed Room Last Report: {getLastReportTime(bedRoomModel)}</h2>
+            <h2 style={{ marginBottom: 0 }}>Second Room Last Report: {getLastReportTime(kidsRoomModel)}</h2>
+            <h2>Garden Last Report: {getLastReportTime(gardenZeroModel)}</h2>
         </div>
     )
 }

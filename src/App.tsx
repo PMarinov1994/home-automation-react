@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     console.log("Setting socket.");
-    const socket = io('marinovi-home-varna.eu', {});
+    const socket = io('https://marinovi-home-varna.eu', {});
 
     socket.on("onNewConnection", (data: string) => onNewConnection(data));
     socket.on("onNewData", (data: string) => onNewData(data));
@@ -47,10 +47,10 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/outside' component={Outside} />
           <Route path='/living-room' component={LivingRoom} />
           <Route path='/bed-room' component={BedRoom} />
-          <Route path='/kids-room' component={KidsRoom} />
-          <Route path='/outside' component={Outside} />
+          <Route path='/bed-room-2' component={KidsRoom} />
         </Switch>
       </Router>
     </>

@@ -57,7 +57,8 @@ module.exports = {
     plugins: [
         new HtmlPlugin({
             filename: "index.html",
-            template: "./src/index.html"
+            template: "./public/index.html",
+            favicon: "./public/icon.png"
         }),
         new MiniCssExtractPlugin()
     ],
