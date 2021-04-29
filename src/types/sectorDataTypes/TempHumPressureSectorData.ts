@@ -1,6 +1,6 @@
 import { PRESSURE_DATA_NAME } from "../constants";
 import { RestApiData } from "../restAPI";
-import { Value, formateDate } from "./BaseSectorData";
+import { Value, ValueCreateNew } from "./BaseSectorData";
 import { TempHumSectorData } from "./TempHumSectorData";
 
 export class TempHumPressureSectorData extends TempHumSectorData {
@@ -14,7 +14,7 @@ export class TempHumPressureSectorData extends TempHumSectorData {
     public parseData(data: RestApiData) {
         super.parseData(data);
         if (data.dataType === PRESSURE_DATA_NAME) {
-            this.pressure.push(new Value(data.data, formateDate(data.timeStamp)));
+            this.pressure.push(ValueCreateNew(data));
         }
     }
 

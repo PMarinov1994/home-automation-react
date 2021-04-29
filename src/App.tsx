@@ -17,28 +17,12 @@ import { AppDispatch } from './redux/store';
 function App() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const onNewConnection = (data: string) => {
-    console.log("Socket -> onNewConnection");
-
-    const args = JSON.parse(data);
-    console.log(args);
-    dispatch(initData(args));
-  }
-
-  const onNewData = (data: string) => {
-    console.log("Socket -> onNewData");
-
-    const args = JSON.parse(data);
-    console.log(args);
-    dispatch(appendData(args));
-  };
-
   useEffect(() => {
     console.log("Setting socket.");
     const socket = io('https://marinovi-home-varna.eu', {});
 
-    socket.on("onNewConnection", (data: string) => onNewConnection(data));
-    socket.on("onNewData", (data: string) => onNewData(data));
+    socket.on("onNewConnection", (data: string) => dispatch(initData(JSON.parse(data))));
+    socket.on("onNewData", (data: string) => dispatch(appendData(JSON.parse(data))));
   }, [dispatch]);
 
   return (

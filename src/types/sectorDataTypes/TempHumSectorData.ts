@@ -1,6 +1,6 @@
 import { HUMIDITY_DATA_NAME, TEMPERATURE_DATA_NAME } from "../constants";
 import { RestApiData } from "../restAPI";
-import { BaseSectorData, formateDate, Value } from "./BaseSectorData";
+import { BaseSectorData, Value, ValueCreateNew } from "./BaseSectorData";
 
 export class TempHumSectorData extends BaseSectorData {
     humidity: Value[];
@@ -15,10 +15,10 @@ export class TempHumSectorData extends BaseSectorData {
     public parseData(data: RestApiData) {
         super.parseData(data);
         if (data.dataType === TEMPERATURE_DATA_NAME) {
-            this.temperature.push(new Value(data.data, formateDate(data.timeStamp)))
+            this.temperature.push(ValueCreateNew(data))
         }
         else if (data.dataType === HUMIDITY_DATA_NAME) {
-            this.humidity.push(new Value(data.data, formateDate(data.timeStamp)));
+            this.humidity.push(ValueCreateNew(data));
         }
     }
 

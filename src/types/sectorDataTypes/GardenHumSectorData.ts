@@ -1,7 +1,7 @@
 import dateFormat from "dateformat";
 import { GARDEN_SINGLE_PLANT_DATA_NAME, GARDEN_DOUBLE_PLANT_DATA_NAME } from "../constants";
 import { RestApiData } from "../restAPI";
-import { BaseSectorData, formateDate, Value } from "./BaseSectorData";
+import { BaseSectorData, Value, ValueCreateNew } from "./BaseSectorData";
 
 export class GardenHumSectorData extends BaseSectorData {
     singlePlantHum: Value[];
@@ -16,10 +16,10 @@ export class GardenHumSectorData extends BaseSectorData {
     public parseData(data: RestApiData) {
         super.parseData(data);
         if (data.dataType === GARDEN_SINGLE_PLANT_DATA_NAME) {
-            this.singlePlantHum.push(new Value(data.data, formateDate(data.timeStamp)));
+            this.singlePlantHum.push(ValueCreateNew(data));
         }
         else if (data.dataType === GARDEN_DOUBLE_PLANT_DATA_NAME) {
-            this.doublePlantHum.push(new Value(data.data, formateDate(data.timeStamp)));
+            this.doublePlantHum.push(ValueCreateNew(data));
         }
     }
 

@@ -36,7 +36,6 @@ const handleData = (state: Sector, action: IBaseAction) => {
 
                 const newState: Sector = state.createNew();
                 newState.pushDataArray(actionType.payload);
-                console.log(newState);
                 return newState;
             }
 
