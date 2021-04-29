@@ -9,5 +9,5 @@ export const PRESSURE_DATA_NAME: string = "pressure";
 export const TEMPERATURE_DATA_NAME: string = "temperature";
 export const HUMIDITY_DATA_NAME: string = "humidity";
 
-export const GARDEN_SINGLE_PLANT_DATA_NAME: string = "A0";
-export const GARDEN_DOUBLE_PLANT_DATA_NAME: string = "A1";
+export const GARDEN_SINGLE_PLANT_DATA_NAME: string = "A1";
+export const GARDEN_DOUBLE_PLANT_DATA_NAME: string = "A0";

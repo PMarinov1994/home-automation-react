@@ -40,7 +40,7 @@ function Home() {
                             {[
                                 { name: constants.KIDS_ROOM_SECTOR_NAME, color: "#ce123b", data: kidsRoomModel.getData().temperature },
                                 { name: constants.LIVING_ROOM_SECTOR_NAME, color: "#12cec5", data: livingRoomModel.getData().temperature },
-                                { name: constants.OUTSIDE_SECTOR_NAME, color: "#cec212", data: outsideModel.getData().temperature },
+                                { name: constants.OUTSIDE_SECTOR_NAME, color: "#1600e5", data: outsideModel.getData().temperature },
                                 { name: constants.BED_ROOM_SECTOR_NAME, color: "#8912ce", data: bedRoomModel.getData().temperature },
                             ]}
                         </TemperatureChart>

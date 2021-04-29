@@ -1,9 +1,5 @@
-import { KIDS_ROOM_SECTOR_NAME, BED_ROOM_SECTOR_NAME, LIVING_ROOM_SECTOR_NAME, OUTSIDE_SECTOR_NAME, GARDEN_0_SECTOR_NAME } from "../constants";
 import { RestApiData } from "../restAPI";
 import { BaseSectorData } from "../sectorDataTypes/BaseSectorData";
-import { GardenHumSectorData } from "../sectorDataTypes/GardenHumSectorData";
-import { TempHumPressureSectorData } from "../sectorDataTypes/TempHumPressureSectorData";
-import { TempHumSectorData } from "../sectorDataTypes/TempHumSectorData";
 
 export abstract class Sector {
     sector: string;
@@ -12,6 +8,7 @@ export abstract class Sector {
         this.sector = name;
     }
 
+    public abstract createNew(): Sector;
     public abstract clone(): Sector;
     public abstract getData(): BaseSectorData;
 

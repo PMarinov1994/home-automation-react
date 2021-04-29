@@ -9,6 +9,10 @@ export class GardenZero extends Sector {
         this.data = new GardenHumSectorData();
     }
 
+    public createNew(): Sector {
+        return new GardenZero(this.sector);
+    }
+
     public getData(): GardenHumSectorData {
         return this.data;
     }

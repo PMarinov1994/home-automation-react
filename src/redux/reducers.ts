@@ -34,7 +34,7 @@ const handleData = (state: Sector, action: IBaseAction) => {
             {
                 const actionType: IInitDataAction = action as IInitDataAction;
 
-                const newState: Sector = state.clone();
+                const newState: Sector = state.createNew();
                 newState.pushDataArray(actionType.payload);
                 console.log(newState);
                 return newState;

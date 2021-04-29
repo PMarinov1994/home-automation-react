@@ -62,14 +62,14 @@ function Outside() {
                     <h1>GARDEN</h1>
                     <h2>Last Report: {getLastReportTime(gardenModel)}</h2>
                     <ul className="control-items">
-                        <HumidityGauge humidity={getLastVal(gardenModel.getData().singlePlantHum)} info="Single Plant (A0)" />
-                        <HumidityGauge humidity={getLastVal(gardenModel.getData().doublePlantHum)} info="Double Plant (A1)" />
+                        <HumidityGauge humidity={getLastVal(gardenModel.getData().singlePlantHum)} info="Single Plant (A1)" />
+                        <HumidityGauge humidity={getLastVal(gardenModel.getData().doublePlantHum)} info="Double Plant (A0)" />
                         <BatteryGauge battery={getLastVal(gardenModel.getData().battery)} />
                     </ul>
 
                     <ul className="control-items">
-                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().singlePlantHum} info="Single Plant (A0)" />
-                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().doublePlantHum} info="Double Plant (A1)" />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().singlePlantHum} info="Single Plant (A1)" />
+                        <HumidityChart chartWidth={calculateWidth(width)} chartData={gardenModel.getData().doublePlantHum} info="Double Plant (A0)" />
                         <BatteryChart chartWidth={width} chartData={gardenModel.getData().battery} />
                     </ul>
                 </div>

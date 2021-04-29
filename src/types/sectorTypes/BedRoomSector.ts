@@ -9,6 +9,10 @@ export class BedRoomSector extends Sector {
         this.data = new TempHumSectorData();
     }
 
+    public createNew(): Sector {
+        return new BedRoomSector(this.sector);
+    }
+
     public getData(): TempHumSectorData {
         return this.data;
     }

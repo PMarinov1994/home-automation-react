@@ -9,6 +9,10 @@ export class OutsideSector extends Sector {
         this.data = new TempHumPressureSectorData();
     }
 
+    public createNew(): Sector {
+        return new OutsideSector(this.sector);
+    }
+
     public getData(): TempHumPressureSectorData {
         return this.data;
     }
